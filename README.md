@@ -15,7 +15,7 @@ I will work on writing a quick learn-C tutorial thingy. But it won't go too in-d
 Learn C the Hard Way is a pretty good starter, and honestly just reading anything you can get your hands on will help.
 
 ##### Why isn't there a tutorial for (INSERT HERE)
-It is actually time consuming to write tutorials. I will probably get around to it eventually if it is important.
+It is actually time consuming to write tutorials. I will probably get around to it eventually if it is important. Make an issue for tutorials you really want and somebody will get to them eventually.
 
 ##### Why are there links that lead to (NULL)?
 These are hover-texts! [[+]](NULL "Hi I am hovertext") A jank[[+]](null "So jank") way of forcing github to display text[[+]](null "Like me!") when you hover. They require a link[[+]](null "Woops! Not a link"), so that is set to NULL[[+]](null "Null is not a valid link so it breaks! Don't click it!")! 
