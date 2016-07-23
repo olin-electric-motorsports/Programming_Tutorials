@@ -1,42 +1,12 @@
-# CAN 101
-Tutorials for people new to REVO programming.
+# Programming Tutorials
+Tutorials for people new to Olin Electric Motorsports programming.
 
 This will cover not only how to program ATmegas, but also all the things you need to know to be a good person! [[+]](NULL "Well, not really. They will probably make you a worse person") 
 *NOTE: Don't click the link, it is only hovertext (check the FAQ)*
 
 Clone this repo to get example code for the tutorials! Follow along! Also make bug requests for typos and whatnot, or make pull-requests if you are super nice! [[+]](NULL "<3")
 
-Some useful files are also in the main folder, such as the ATmega datasheet and the pinouts in a readable form[[+]](NULL "The datasheet has a terrible format for the pinouts, and it is really hard to read. I painstakingly transcribed them into a text document.")
-
-## Tutorials
-##### Tut 1 - Setup
-Set up your system and get the necessary tools to program ATmegas!
-
-##### Tut 2 - Wiring and Flashing
-Learn to wire up and flash code onto an ATmega. 
-
-##### Tut 3 - Blinky: How Do You Do?
-Learn what "blinky" does line by line.
-
-##### Tut 4 - Inputs & Outputs
-Learn to use digital inputs, analog inputs and analog outputs. From this point on, you can basically do everything with an ATmega.
-
-##### Tut 5 - Interrupts
-Interrupts on an ATmega. You might think you know it all, but you don't! Learn to program like the pros. 
-
-##### Learn Git
-A general overview of how to use Git and how we are using git for our project. Remember to never push to master.[[+]](null "DON'T DO IT!")
-
-##### Style-Guide
-The general code style that we will use. Also includes some comments about commenting your code. 
-
-## Soon to come Tutorials[[+]](null "Maybe")
-
-##### Tut 6 - CAN
-CAN and how to use it on an ATmega, and how to use our API. 
-
-##### Learn C
-A general guide on how to program in C.
+The `ATmegaTutorials` folder contains tutorials specific to ATmega programming. The `GeneralTutorials` folder contains tutorials related to our team's workflow and things not directly related to ATmegas.
 
 ## FAQ
 ##### I Don't know C, What do I do?
