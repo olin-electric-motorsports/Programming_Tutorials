@@ -1,4 +1,4 @@
-
+﻿
 #Understanding Blinky
 
 ### All the Code
@@ -67,7 +67,7 @@ int main (void) {
 
 For those that don’t know C, this is the “start” of the program when it is run. This is the most important function. We will always define main as per C11 standards and have an int definition along with it.
 
-If you do not know what I mean by this, hit the google’s and get learning.
+If you do not know what I mean by this, hit the google’s and get learning (or use the C textbook that is on Slack).
 
 
 
