@@ -88,8 +88,6 @@ If the AVR programmer’s light does not turn green, then you wired it upside do
 ##### Get the Code
 You will be able to find code in the blinky/ folder. Clone this repo if you haven't already to get the example code.
 
-##### Make a Folder!
-You will need to make a folder (called Blinky) to put the Blinky C code in under the src/ folder. The Makefile requires subfolders in order to allow our team to be more organized (as in Byron had a brilliant idea and that's what we use now). 
 
 ##### Compile and Flash the ATmega
 Go into the cloned folder and run:
