@@ -9,13 +9,13 @@ For version control on REVO we use git and github. Learn how to use git and lear
 Check out [https://git-scm.com/book/en/v2/Getting-Started-Git-Basics](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics)
 
 If you are using 
-'''
+```
 sudo apt-get git 
-'''
+```
 in order to install Git, you may need to run
-'''
+```
 sudo apt-get updates
-'''
+```
 to get any updates that are required to download git.
 
 
