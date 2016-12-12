@@ -95,7 +95,7 @@ Go into the cloned folder and run:
 sudo make TARGET=Blinky flash
 ```
 
-Check the output log, if there are errors see what they mean and try to debug them yourself. Check your connections. 
+Check the output log, if there are errors see what they mean and try to debug them yourself. Check your connections. If you are having problems with the code, make sure that the code you want to run is in a folder in the src/ folder; in this case the folder must be named Blinky with the Makefiles that we are running.
 
 ##### Plug an LED and resistor in series to ground into PE1 (pin 10)
 Watch the LED blink! How fast is it blinking? Can you change the frequency at which it blinks?
