@@ -4,8 +4,8 @@ endif
 
 CC=avr-gcc
 MCU=atmega16m1
-#PROGRAMMER=avrispmkII
-PROGRAMMER=usbtiny
+PROGRAMMER=avrispmkII
+#PROGRAMMER=usbtiny
 PORT=usb
 AVRDUDE=avrdude
 OBJCOPY=avr-objcopy
