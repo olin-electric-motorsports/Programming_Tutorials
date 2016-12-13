@@ -1,86 +1,48 @@
-# AVR Makefile
-# #####################################
-#
-# Part of the uCtools project
-# uctools.github.com
-#
-#######################################
-# user configuration:
-#######################################
-# TARGET: name of the output file
-TARGET = $(build)
-# MCU: part number to build for
-MCU = atmega16m1
-# SOURCES: list of input source sources
-SOURCES = $(FILE).c
-# INC: list of build dependencies
-INC = -Isrc/
-# OUTDIR: directory to use for output
-OUTDIR = build
-# PROGRAMMER: name of programmer
-PROGRAMMER = avrispmkII
-# PORT: location of programmer
-PORT = usb
-# define flags
-CFLAGS = -mmcu=$(MCU) -g -Os -Wall -Wunused $(INC)
-ASFLAGS = -mmcu=$(MCU) -x assembler-with-cpp -Wa,-gstabs
-LDFLAGS = -mmcu=$(MCU) -Wl,-Map=$(OUTDIR)/$(TARGET).map
-AVRDUDE_FLAGS = -p $(MCU) -v -c $(PROGRAMMER) -P $(PORT)
+ifndef TARGET
+$(info Target is not set; do `TARGET={dir}` to set the compilation route.)
+endif
 
-#######################################
-# end of user configuration
-#######################################
-#
-#######################################
-# binaries
-#######################################
-CC      = avr-gcc
-LD      = avr-ld
-AR      = avr-ar
-AS      = avr-gcc
-GASP    = avr-gasp
-NM      = avr-nm
-OBJCOPY = avr-objcopy
-RM      = rm -f
-MKDIR	= mkdir -p
-AVRDUDE = avrdude
-#######################################
+CC=avr-gcc
+MCU=atmega16m1
+PROGRAMMER=avrispmkII
+#PROGRAMMER=usbtiny
+PORT=usb
+AVRDUDE=avrdude
+OBJCOPY=avr-objcopy
 
-# file that includes all dependancies
-DEPEND = $(SOURCES:.c=.d)
+SRCDIR=src
+OBJDIR=obj
+BUIDIR=build
 
-# list all object files
-OBJECTS = $(addprefix $(OUTDIR)/,$(SOURCES:.c=.o))
+SRCS=$(wildcard $(SRCDIR)/$(TARGET)/*.c)
+OBJS=$(patsubst $(SRCDIR)/$(TARGET)/%.c, $(OBJDIR)/%.o, $(SRCS))
 
-# default: build all
-all: $(OUTDIR)/$(TARGET).elf $(OUTDIR)/$(TARGET).hex $(OUTDIR)/$(TARGET).srec
+CFLAGS+=-mmcu=$(MCU) -g -Os -Wall -Wunused -I$(LIBDIR)/
+LDFLAGS=-mmcu=$(MCU) -Wl,-Map=$(BUIDIR)/$(TARGET).map -lm
+AVRFLAGS=-p $(MCU) -v -c $(PROGRAMMER) -P $(PORT)
 
-$(OUTDIR)/%.srec: $(OUTDIR)/%.elf
-	$(OBJCOPY) -j .text -j .data -O srec $< $@
+# Recipes
 
-$(OUTDIR)/%.elf: $(OBJECTS)
-	$(CC) $(OBJECTS) $(LDFLAGS) $(LIBS) -o $@
+all: $(BUIDIR)/$(TARGET).hex $(BUIDIR)/$(TARGET).elf
 
-$(OUTDIR)/%.hex: $(OUTDIR)/%.elf
+$(BUIDIR)/%.hex: $(BUIDIR)/%.elf
 	$(OBJCOPY) -O ihex -R .eeprom $< $@
 
-$(OUTDIR)/%.o: src/%.c | $(OUTDIR)
-	$(CC) -c $(CFLAGS) -o $@ $<
+$(BUIDIR)/%.elf: $(OBJS)
+	$(CC) $^ $(LDFLAGS) -o $@
 
-%.lst: %.c
-	$(CC) -c $(ASFLAGS) -Wa,-anlhd $< > $@
+$(OBJDIR)/%.o: $(SRCDIR)/$(TARGET)/%.c
+	$(CC) -c -o $@ $< $(CFLAGS)
 
-# create the output directory
-$(OUTDIR):
-	$(MKDIR) $(OUTDIR)
+$(OBJS): | $(OBJDIR)
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+	mkdir -p $(BUIDIR)
 
-# download to mcu flash
-flash: $(OUTDIR)/$(TARGET).hex
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -U flash:w:$<
+.PHONY: flash
+flash: $(BUIDIR)/$(TARGET).hex
+	sudo $(AVRDUDE) $(AVRFLAGS) -U flash:w:$<
 
-# verify mcu flash
-verify: $(OUTDIR)/$(TARGET).hex
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -U flash:v:$<
-
+.PHONY: clean
 clean:
-	-$(RM) -r $(OUTDIR)/*
+	rm -rf $(BUIDIR) $(OBJDIR)
