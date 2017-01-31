@@ -1,4 +1,4 @@
-Some useful files are also in the main folder, such as the ATmega datasheet and the pinouts in a readable form[[+]](NULL "The datasheet has a terrible format for the pinouts, and it is really hard to read. I painstakingly transcribed them into a text document.")
+Some useful files are also in the main folder, such as the ATmega datasheet and the pinouts in a readable form.
 
 ## Tutorials
 ### Tut 0 - Setup
