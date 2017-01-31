@@ -1,4 +1,4 @@
-sudo apt-get install avrdude gcc-avr avr-libc git-core build-essential checkinstall
+sudo apt-get install avrdude gcc-avr avr-libc git-core build-essential checkinstall cmake
 
 cp .avrduderc ~
 sudo cp 50-avr-programmers.rules /etc/udev/rules.d/

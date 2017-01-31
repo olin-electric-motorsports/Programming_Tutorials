@@ -1,4 +1,4 @@
-sudo pacman -S avrdude avr-gcc avr-libc git-core build-essential
+sudo pacman -S avrdude avr-gcc avr-libc git-core build-essential cmake
 
 mv .avrduderc ~
 sudo mv 50-avr-programmers.rules /etc/udev/rules.d/

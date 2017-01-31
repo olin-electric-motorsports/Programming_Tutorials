@@ -1,13 +1,13 @@
 ﻿
 # Set Up The ATmega
 
-### What it is
+## What it is
 The ATmega is a microcontroller. A microcontroller is a CPU, RAM, ROM and other things (in this case IO pins, ADC and some other fanciness) all bundled into one small chip. You may have worked with one before using the Arduino bootloader. The programming we will be doing is not going to be anything like that.
 
-### The Pin Outs
+## The Pin Outs
 A list of the pinouts can be found in pinouts.txt which has all of the pin numbers on the left, and the related values on the right. A similar diagram can be found in the ATmega datasheet. If you are ever in confusion, reference one of those sheets so you use the correct pins.
 
-### The Most Basic Configuration
+## The Most Basic Configuration
 Not all of the pins need to be wired in order to utilize the ATmega. In fact, only 5 pins are necessary in order to use the ATmega (well, technically 3 pins).
 
 ```
@@ -42,7 +42,7 @@ This is the Reset pin. Setting this pin to 0V will restart the ATmega and the pr
 
 Congratulations! You have now turned the ATmega on! It won’t do anything because you haven’t programmed it. 
 
-### Wiring the ATmega for Programming
+## Wiring the ATmega for Programming
 I lied. We will need more than 5 pins to use the ATmega, mainly because we have to program it (or else it doesn’t do anything!). Thankfully, some of our ATmegas make it super easy to program, and they have little pins on top that route to the pins needed to program it (And the little pins on top fit perfectly with our AVR programmers!) If you have one of those, skip this step. 
 
 ```
@@ -69,11 +69,11 @@ SCK (28)
 
 This is the SCI Clock. The ATmega and your computer think at different speeds. Imagine you are speaking to dog; you can’t say things at the same speed as you would to yourself. Instead you have to slow down so that your dog can understand you. It is basically the same thing here. This just syncs the clocks of your computer to the clock of the ATmega, so that valid communication can take place.
 
-### Into the Programmer They Go!
-##### Plug the AVRdude into your computer (USB -> USB port)
+## Into the Programmer They Go!
+### Plug the AVRdude into your computer (USB -> USB port)
 The AVR programmer should light up with a red light. Notice that the other side has six pinouts… I wonder what those mean...
 
-##### Plug the pins in the pins with corresponding pins
+### Plug the pins in the pins with corresponding pins
 If you were lucky and have one of the ATmegas with small pins on top, this is super easy. Otherwise, do whatever janky thing works to get these connections in the right place.
 
 |           |          |
@@ -84,25 +84,26 @@ If you were lucky and have one of the ATmegas with small pins on top, this is su
 
 If the AVR programmer’s light does not turn green, then you wired it upside down. Flip the AVR programmer to fix the problem. If that doesn’t work, you screwed up or the ATmega is broken.
 
-### You Can Now Program the ATmega!
-##### Get the Code
+## You Can Now Program the ATmega!
+### Get the Code
 You will be able to find code in the blinky/ folder. Clone this repo if you haven't already to get the example code.
 
 
-##### Compile and Flash the ATmega
+### Compile and Flash the ATmega
 Go into the cloned folder and run:
+
 ```
 sudo make TARGET=Blinky flash
 ```
 
 Check the output log, if there are errors see what they mean and try to debug them yourself. Check your connections. If you are having problems with the code, make sure that the code you want to run is in a folder in the src/ folder; in this case the folder must be named Blinky with the Makefiles that we are running.
 
-##### Plug an LED and resistor in series to ground into PE1 (pin 10) (for those of you who don't have pre-made boards)
+### Plug an LED and resistor in series to ground into PE1 (pin 10) (for those of you who don't have pre-made boards)
 Watch the LED blink! How fast is it blinking? Can you change the frequency at which it blinks?
 
-
-##### For all of you with pre-made boards
+### For all of you with pre-made boards
 If you're using a board you designed you probably won't be able to actually do the blink and may need to go in and actually edit some code (spooky, I know). This is going to be dependent on how you wired your circuit so I can only give you some general guides. First you will most likely need to change the pin from PE1 to another pin. Reference the datasheet in order to figure out what pin this should be. If you are changing it to another PE pin then all you need to do is change the number in the DDRE and PORTE lines. If, however, you are using a PC pin then what you will need to do is change the line
+
 ```
 DDRE |= _BV(PE1);
 ```
@@ -125,8 +126,5 @@ to
 PORTC ^= _BV(PC7);
 ```
 
-changing the number on PC to the number of the pin you're using (in this example, the number was 7). If that doesn't work try 1) Google or 2) Byron.
-
-
-##### Read the code and learn what it is doing.
+changing the number on PC to the number of the pin you're using (in this example, the number was 7). If that doesn't work try either Google or Byron if he is still around.
 
