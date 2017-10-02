@@ -49,5 +49,26 @@ Whenever you start working on your local branch, you don't necessarily know if c
 
 #### Setting up Remotes
 ```
-$ git remote add origin 
+$ git remote add origin https://github.com/user/repo.git
 ```
+Verify new remote
+```
+$ git remote -v
+```
+To check all your remotes that you might have setup, you can try
+```
+$ git remote --v
+```
+So now you might be wondering "What is a remote?" Great question! It basically tells git where you want to pull and push to. By setting up this remote, you can `git pull remote master` to pull from the master branch while still being able to `git pull master` from your own master branch. Since we will *NEVER* be pushing to master, you won't be pushing to master. 
+### Pushing
+Since you will only be pushing to your own master branch of your fork, we don't need to worry about pushing to your remote. Here is what you need to do to push to your master (each step is a new line):
+```
+git add --all
+git commit -a -m"Commit message"
+git push
+```
+The first line adds all the new files in your folder so that git knows to track them and push them to github. If you don't want all the files in your folder added, you can add the one by one like `git add main.c`.
+
+The next line tells git first to commit all code changes/modifications and then adds a commit message which tells what you worked on. These should be pretty descriptive and explain what changes you made and how they make your code better. You can also commit by `git commit -a` which will then open a text document that you can write a longer commit message for. Just follow the directions that will appear at the bottom of the screen.
+
+The final step tells git to push that commit to github where it is made available to everyone else.
