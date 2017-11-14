@@ -1,7 +1,7 @@
 # Build Chain Design
 Here I shall take some time to explain the thought process and execution behind the firmware build chain for the 2017-2018 Olin Electric Motorsports competition year. 
 
-Author: Peter Seger &copy 2017
+Author: Peter Seger 2017
 
 License: MIT
 
