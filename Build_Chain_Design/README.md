@@ -30,5 +30,6 @@ By making our code more modular we were able to get the core functionality prett
 
 ## How it works
 - The user is prompted for which board they want to build and whether they want to flash it or set the fuses
-![User Input]
-(userinput.png)
+
+![User Input](userinput.png)
+
