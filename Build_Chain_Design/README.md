@@ -29,7 +29,13 @@ While definitely unordthodox, this approach afforded us some great advantages:
 By making our code more modular we were able to get the core functionality pretty quickly and have been able to work on adding functionality then after.
 
 ## How it works
-- The user is prompted for which board they want to build and whether they want to flash it or set the fuses
+The user is prompted for which board they want to build and whether they want to flash it or set the fuses
 
 ![User Input](userinput.png)
 
+The script then performs some error correction and setup to ensure the request is valid before generating a sequence of shell commands using ARVGCC:
+1. Makes an output file in the `.elf` format using the globally defined flags
+2. Uses avr-objcopy to copy the ouput and uses the globally set flags to create a `.hex` file
+3. If flashing, uses avr-dude and the defined avr flags to flash the newly created `.hex` file
+
+Before each 'build cycle' the tool deletes all the output files so as to avoid version issues and confusion. 
